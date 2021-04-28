@@ -76,30 +76,33 @@ public class MostrarDepartamentos extends HttpServlet {
 	
 	private PrintWriter printResponse(PrintWriter out, List<Departamento> listaDepartamento) {
 			
-			PrintWriter res = out;
+		PrintWriter res = out;		
+		res.println("<html>");
+		res.println("<title>Ejercicio Serverlet</title>");
+		res.println("<body>");
+		res.println("<h1>TABLA DEPARTAMENTOS</h1>");		
+		res.println("<table border=\"2\">");
+		res.println("<tr>");
+		res.println("<td> CODIGO </td>");
+		res.println("<td> NOMBRE </td>");
+		res.println("<td> CODIGO RESPONSABLE </td>");
+		res.println("</tr>");
+		
+		//RECORRIDO DE LOS DEPARTAMENTOS PARA PINTARLOS EN LA TABLA
+		for(int i = 0; i < listaDepartamento.size(); i++) {
 			
-			res.println("<html>");
-			res.println("<title>Ejercicio Servlet</title>");
-			res.println("<body>");
-			res.println("<h1>TABLA DEPARTAMENTOS</h1>");		
-			res.println("CODIGO");
-			res.println("NOMBRE>");
-			res.println("CODIGO RESPONSABLE");
-	
-			for(int i = 0; i < listaDepartamento.size(); i++) {
-				
-				Departamento depar = listaDepartamento.get(i);
-				res.println("<br>");
-				res.println(depar.getCodigo()+" ");
-				res.println(depar.getNombre()+" ");
-				res.println(depar.getCodResponsable()+" ");
-				res.println("<br>");
-			}
-			res.println("</table>");
-			res.println("</body>");
-			res.println("</html>");
-			
-			return res;
+			Departamento depar = listaDepartamento.get(i);
+			res.println("<tr>");
+			res.println("<td>" + depar.getCodigo() + "</td>");
+			res.println("<td>" + depar.getNombre() + "</td>");
+			res.println("<td>" + depar.getCodResponsable()+"</td> ");
+			res.println("</tr>");
+		}
+		
+		res.println("</table>");
+		res.println("</body>");
+		res.println("</html>");			
+		return res;
 		}
 	
 	}
