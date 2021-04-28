@@ -19,12 +19,13 @@ public class DepartamentoDAO {
 	private static Logger logger = LogManager.getLogger(MostrarDepartamentos.class);
 	
 	//INSERTA DEPARTAMENTO
-	public static void insertDepartamento(Session s, Departamento departamento) {				
+	public static void insertDepartamento(Session s, Departamento departamento) {
+		logger.debug("INSERTANDO DEPARTAMENTOS");
 		s.save(departamento);		
 	}
 	//ACTUALIZA DEPARTAMENTO
 	public static void updateDepartamento(Session s, Departamento departamentoActualizado) {				
-
+		logger.debug("ACTUALIZANDO DEPARTAMENTOS");
 		Departamento departamento = s.get(Departamento.class, departamentoActualizado.getCodigo());
 		departamento.setCodResponsable(departamentoActualizado.getCodResponsable());
 		departamento.setNombre(departamentoActualizado.getNombre());
@@ -34,7 +35,7 @@ public class DepartamentoDAO {
 	}
 	//ELIMINA DEPARTAMENTO
 	public static void deleteDepartamento(Session s, int codigo) {	
-				
+		logger.debug("ELIMINANDO DEPARTAMENTOS");	
 		Departamento departamento = s.get(Departamento.class, codigo);		
 		s.delete(departamento);
 	}
@@ -46,10 +47,6 @@ public class DepartamentoDAO {
 		
 		return departamentoList;
 	}
-
-	// hql queries
-
-	// Native queries
 		
 	// Criteria queries
 	public static List<Departamento> getAllDepartamentos(Session s) {
@@ -65,12 +62,6 @@ public class DepartamentoDAO {
 											.setMaxResults(1)
 											.uniqueResult();
 		
-//		CriteriaBuilder builder = s.getCriteriaBuilder();
-//		CriteriaQuery<Provider> query = builder.createQuery(Provider.class);
-//		Root<Provider> root = query.from(Provider.class);
-//     	query.select(root).where(builder.equal(root.get("providerId"), providerId));
-//      Query<Provider> q = s.createQuery(query);
-//      Provider result = q.getSingleResult();
 		return result;
 	}
 }

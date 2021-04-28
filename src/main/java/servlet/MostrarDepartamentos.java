@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//import org.apache.log4j.LogManager;
-//import org.apache.log4j.Logger;
+import org.apache.log4j.LogManager;
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
@@ -28,7 +28,7 @@ import main.java.daoTablas.EmpleadoDAO;
 public class MostrarDepartamentos extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-	//private static Logger logger = LogManager.getLogger(MostrarDepartamentos.class);
+	private static Logger logger = LogManager.getLogger(MostrarDepartamentos.class);
 	
 	static SessionFactory sessionFactory;
 	static Session session;
@@ -47,7 +47,7 @@ public class MostrarDepartamentos extends HttpServlet {
 	public void init(ServletConfig config) throws ServletException {
 		// TODO Auto-generated method stub
 		
-		//logger.info("%1$s: >>>>>> Main execution started.");
+		logger.info("Inicio del servidor");
 		
 		session = HibernateUtil.getSessionFactory().openSession();
 		
@@ -57,10 +57,10 @@ public class MostrarDepartamentos extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		//logger.debug("PROCEDE A OBTENER LOS DEPARTAMENTOS");
+		logger.debug("PROCEDE A OBTENER LOS DEPARTAMENTOS");
 		PrintWriter out = response.getWriter();
 		List<Departamento> listaDepartamento = DepartamentoDAO.getAllDepartamento(session);
-		//logger.debug("ESCRIBE EL LISTADO DE DEPARTAMENTOS");
+		logger.debug("ESCRIBE EL LISTADO DE DEPARTAMENTOS");
 		printResponse(out, listaDepartamento);
 		out.close();
 		
