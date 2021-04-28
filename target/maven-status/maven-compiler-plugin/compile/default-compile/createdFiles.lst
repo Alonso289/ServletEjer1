@@ -1,0 +1,6 @@
+main\java\daoTablas\EmpleadoDAO.class
+main\java\filesMapping\Empleado.class
+main\java\filesMapping\Departamento.class
+main\java\daoTablas\DepartamentoDAO.class
+main\java\servlet\HibernateUtil.class
+main\java\servlet\MostrarDepartamentos.class
